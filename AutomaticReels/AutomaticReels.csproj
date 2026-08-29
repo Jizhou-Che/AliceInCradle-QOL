@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>AutomaticReels</AssemblyName>
     <Product>AutomaticReels</Product>
-    <Version>0.29.1</Version>
+    <Version>0.30.1</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <RestoreAdditionalProjectSources>

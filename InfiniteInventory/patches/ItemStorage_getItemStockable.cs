@@ -19,6 +19,6 @@ public class ItemStorage_getItemStockable
 
     static bool PushPredicate(bool flag, NelItem Itm)
     {
-        return !(!flag && (Itm.isEmptyBottle() || Itm.isEmptyLunchBox()));
+        return !(!flag && (Itm.isEmptyBottle() || Itm.isEmptyLunchBox() || ItemHid.isFakeHolder(Itm)));
     }
 }
