@@ -12,6 +12,11 @@ public class ItemStorage_getItemStockable
     {
         var codeMatcher = new CodeMatcher(instructions);
         codeMatcher.MatchForward(false, new CodeMatch(OpCodes.Ldloc_0), new CodeMatch(OpCodes.Brtrue));
+        if (!codeMatcher.IsValid)
+        {
+            Plugin.Logger.LogError("IL matching failure in ItemStorage_getItemStockable transpiler.");
+            return codeMatcher.InstructionEnumeration();
+        }
         codeMatcher.Advance(1);
         codeMatcher.InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_1), Transpilers.EmitDelegate(PushPredicate));
         return codeMatcher.InstructionEnumeration();

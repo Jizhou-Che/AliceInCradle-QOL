@@ -14,6 +14,11 @@ public class ReelExecuter_decideRotate
     {
         var codeMatcher = new CodeMatcher(instructions);
         codeMatcher.MatchForward(false, new CodeMatch(i => i.opcode == OpCodes.Ldfld && ((FieldInfo)i.operand).Name == "content_id"));
+        if (!codeMatcher.IsValid)
+        {
+            Plugin.Logger.LogError("IL matching failure in ReelExecuter_decideRotate transpiler.");
+            return codeMatcher.InstructionEnumeration();
+        }
         codeMatcher.Advance(2);
         codeMatcher.InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_0), Transpilers.EmitDelegate(PushContentIdDec));
         return codeMatcher.InstructionEnumeration();
@@ -23,31 +28,20 @@ public class ReelExecuter_decideRotate
     {
         if (Input.GetKey(KeyCode.RightShift))
         {
-            switch (instance.getEType())
+            return instance.getEType() switch
             {
-                case ReelExecuter.ETYPE.GRADE1:
-                    return 3;
-                case ReelExecuter.ETYPE.GRADE2:
-                    return 2;
-                case ReelExecuter.ETYPE.GRADE3:
-                    return 0;
-                case ReelExecuter.ETYPE.COUNT_ADD1:
-                    return 1;
-                case ReelExecuter.ETYPE.COUNT_ADD2:
-                    return 10;
-                case ReelExecuter.ETYPE.COUNT_ADD3:
-                    return 1;
-                case ReelExecuter.ETYPE.COUNT_MUL1:
-                    return 1;
-                case ReelExecuter.ETYPE.ADD_MONEY:
-                    return 2;
-                case ReelExecuter.ETYPE.RANDOM:
-                    return 0;
-                default:
-                    return original;
-            }
+                ReelExecuter.ETYPE.GRADE1 => 3,
+                ReelExecuter.ETYPE.GRADE2 => 2,
+                ReelExecuter.ETYPE.GRADE3 => 0,
+                ReelExecuter.ETYPE.COUNT_ADD1 => 1,
+                ReelExecuter.ETYPE.COUNT_ADD2 => 10,
+                ReelExecuter.ETYPE.COUNT_ADD3 => 1,
+                ReelExecuter.ETYPE.COUNT_MUL1 => 1,
+                ReelExecuter.ETYPE.ADD_MONEY => 2,
+                ReelExecuter.ETYPE.RANDOM => 0,
+                _ => original,
+            };
         }
-
         return original;
     }
 }

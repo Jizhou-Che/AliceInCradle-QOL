@@ -12,9 +12,14 @@ public class ItemStorage_getConnectableWLinkTarget
     {
         var codeMatcher = new CodeMatcher(instructions);
         codeMatcher.MatchForward(false, new CodeMatch(OpCodes.Ldarg_0), new CodeMatch(OpCodes.Ldfld), new CodeMatch(OpCodes.Ldarg_0), new CodeMatch(OpCodes.Ldfld), new CodeMatch(OpCodes.Blt));
+        if (!codeMatcher.IsValid)
+        {
+            Plugin.Logger.LogError("IL matching failure in ItemStorage_getConnectableWLinkTarget transpiler.");
+            return codeMatcher.InstructionEnumeration();
+        }
         var label = codeMatcher.InstructionAt(4).operand;
         codeMatcher.RemoveInstructions(5);
-        codeMatcher.Insert(new CodeInstruction(OpCodes.Br, label));
+        codeMatcher.InsertAndAdvance(new CodeInstruction(OpCodes.Br, label));
         return codeMatcher.InstructionEnumeration();
     }
 }

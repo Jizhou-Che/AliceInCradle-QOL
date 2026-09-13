@@ -12,7 +12,12 @@ public class ReelExecuter_applyEffectToIK
     {
         var codeMatcher = new CodeMatcher(instructions);
         codeMatcher.MatchForward(false, new CodeMatch(OpCodes.Ldc_I4_S, (sbyte)99));
-        codeMatcher.SetInstructionAndAdvance(new CodeInstruction(OpCodes.Ldc_I4, 9999));
+        if (!codeMatcher.IsValid)
+        {
+            Plugin.Logger.LogError("IL matching failure in ReelExecuter_applyEffectToIK transpiler.");
+            return codeMatcher.InstructionEnumeration();
+        }
+        codeMatcher.Set(OpCodes.Ldc_I4, 9999);
         return codeMatcher.InstructionEnumeration();
     }
 }

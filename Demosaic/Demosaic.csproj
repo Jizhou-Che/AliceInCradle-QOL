@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>Demosaic</AssemblyName>
     <Product>Demosaic</Product>
-    <Version>0.30.2</Version>
+    <Version>0.30.3</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <RestoreAdditionalProjectSources>
