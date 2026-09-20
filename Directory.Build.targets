@@ -1,0 +1,14 @@
+<Project>
+
+  <ItemGroup>
+    <GameExe Include="$(MSBuildThisFileDirectory)..\AliceInCradle_ver*\AliceInCradle.exe" />
+    <GamePluginDir Include="@(GameExe->'%(RootDir)%(Directory)BepInEx\plugins')" />
+  </ItemGroup>
+
+  <Target Name="DeployToGame" AfterTargets="Build">
+    <Warning Condition="'@(GamePluginDir)' == ''" Text="AliceInCradle.exe not found. Deployment skipped." />
+    <MakeDir Condition="'@(GamePluginDir)' != ''" Directories="@(GamePluginDir)" />
+    <Copy Condition="'@(GamePluginDir)' != ''" SourceFiles="$(TargetPath)" DestinationFolder="@(GamePluginDir)" />
+  </Target>
+
+</Project>

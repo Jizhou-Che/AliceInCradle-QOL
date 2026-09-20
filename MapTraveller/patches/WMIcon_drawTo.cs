@@ -47,19 +47,27 @@ public class WMIcon_drawTo
 
         if (__instance.type == WMIcon.TYPE.OTHER)
         {
-            switch (__instance.sf_key)
+            switch (__instance.sf_key.Split('|')[0])
             {
-                case "coffeemaker":
+                case "Coffeemaker":
                     Md.Col = C32.MulA(4278190080U, alpha);
                     Md.RotaPF(lx, ty, 0.6f, 0.6f, 0f, MTRX.getPF("itemrow_category.53"), false, false, false, uint.MaxValue, false, 0, false);
                     break;
-                case "puppet":
+                case "Puppet":
                     Md.Col = C32.WMulA(alpha);
                     Md.RotaPF(lx, ty, 0.7f, 0.7f, 0f, MTRX.getPF("IconGolem"), false, false, false, uint.MaxValue, false, 0, false);
                     break;
-                case "tilde":
+                case "Tilde":
                     Md.Col = C32.WMulA(alpha);
                     Md.RotaPF(lx, ty, 0.9f, 0.9f, 0f, MTRX.getPF("IconTilde"), false, false, false, uint.MaxValue, false, 0, false);
+                    break;
+                case "ItemSupplier":
+                    Md.Col = C32.MulA(4278190080U, alpha);
+                    Md.RotaPF(lx, ty, 1f, 1f, 0f, MTRX.getPF("itemrow_category.0"), false, false, false, uint.MaxValue, false, 0, false);
+                    break;
+                case "FishPond":
+                    Md.Col = C32.MulA(4278190080U, alpha);
+                    Md.RotaPF(lx, ty, 0.7f, 0.7f, 0f, MTRX.getPF("itemrow_category.79"), false, false, false, uint.MaxValue, false, 0, false);
                     break;
             }
         }

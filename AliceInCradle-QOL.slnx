@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="AutomaticReels/AutomaticReels.csproj" />
+  <Project Path="Demosaic/Demosaic.csproj" />
+  <Project Path="InfiniteInventory/InfiniteInventory.csproj" />
+  <Project Path="MapTraveller/MapTraveller.csproj" />
+</Solution>
