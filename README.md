@@ -18,7 +18,7 @@
 
 ### 自动转轮 AutomaticReels
 
-使用方法为在执行屏幕下方的最多八个**效果转轮**的选择时按住<kbd>右Shift</kbd>键，可以使效果转轮的选择最优化。
+使用方法为在执行屏幕下方的最多八个**效果转轮**的选择时按住<kbd>右Shift</kbd>键，可以使效果转轮的选择最优化。默认为按住指定按键触发，也可以通过配置文件将 `TriggerMode` 设为 `Always` 使其始终触发，或设为 `Never` 使其始终不触发；`HoldKey` 模式下的触发按键可以通过 `TriggerKey` 修改。
 
 ### 无限背包 InfiniteInventory
 
