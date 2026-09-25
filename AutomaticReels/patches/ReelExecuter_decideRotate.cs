@@ -26,7 +26,7 @@ public class ReelExecuter_decideRotate
 
     static int PushContentIdDec(int original, ReelExecuter instance)
     {
-        if (Input.GetKey(KeyCode.RightShift))
+        if (Plugin.ShouldOptimize())
         {
             return instance.getEType() switch
             {
