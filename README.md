@@ -18,7 +18,7 @@
 
 ### 自动转轮 AutomaticReels
 
-使用方法为在执行屏幕下方的最多八个**效果转轮**的选择时按住<kbd>右Shift</kbd>键，可以使效果转轮的选择最优化。默认为按住指定按键触发，也可以通过配置文件将 `TriggerMode` 设为 `Always` 使其始终触发，或设为 `Never` 使其始终不触发；`HoldKey` 模式下的触发按键可以通过 `TriggerKey` 修改。
+使用方法为在执行屏幕下方的最多八个**效果转轮**的选择时按住<kbd>右Shift</kbd>键，或按住手柄左扳机 <kbd>LT</kbd>，可以使效果转轮的选择最优化。默认为按住指定按键触发，也可以通过配置文件将 `TriggerMode` 设为 `Always` 使其始终触发，或设为 `Never` 使其始终不触发。`HoldKey` 模式下只有配置的按键会触发：键盘是 `TriggerKey`，手柄是 `TriggerGamepadKey`，默认分别为右 Shift 和左扳机（`LeftTrigger`）。转盘结算时游戏只响应少量按键，左扳机不在其中。左扳机没有旧的摇杆按键码，Steam Deck 的手柄也不会进入旧输入，因此手柄键从新输入系统读取。将某一路设为 `None` 可关闭那一路。
 
 ### 无限背包 InfiniteInventory
 

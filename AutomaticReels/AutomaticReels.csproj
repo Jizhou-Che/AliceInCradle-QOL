@@ -10,6 +10,10 @@
     <Reference Include="Assembly-CSharp">
       <HintPath>..\_lib\Assembly-CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>..\_lib\Unity.InputSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
   </ItemGroup>
 
 </Project>
