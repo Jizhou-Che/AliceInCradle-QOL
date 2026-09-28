@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
 using nel;
@@ -15,14 +16,14 @@ public class ItemStorage_Add
         codeMatcher.MatchForward(false, new CodeMatch(OpCodes.Ldloc_S), new CodeMatch(OpCodes.Ldc_I4_0), new CodeMatch(OpCodes.Blt));
         if (!codeMatcher.IsValid)
         {
-            Plugin.Logger.LogError("IL matching failure in ItemStorage_Add transpiler.");
+            Plugin.Logger.LogError($"IL matching failure in {MethodBase.GetCurrentMethod().DeclaringType.Name} transpiler.");
             return codeMatcher.InstructionEnumeration();
         }
         codeMatcher.RemoveInstructions(3);
         codeMatcher.MatchForward(false, new CodeMatch(OpCodes.Ldloc_S), new CodeMatch(OpCodes.Brfalse));
         if (!codeMatcher.IsValid)
         {
-            Plugin.Logger.LogError("IL matching failure in ItemStorage_Add transpiler.");
+            Plugin.Logger.LogError($"IL matching failure in {MethodBase.GetCurrentMethod().DeclaringType.Name} transpiler.");
             return codeMatcher.InstructionEnumeration();
         }
         codeMatcher.RemoveInstructions(2);

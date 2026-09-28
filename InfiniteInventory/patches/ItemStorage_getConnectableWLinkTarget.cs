@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
 using nel;
@@ -14,7 +15,7 @@ public class ItemStorage_getConnectableWLinkTarget
         codeMatcher.MatchForward(false, new CodeMatch(OpCodes.Ldarg_0), new CodeMatch(OpCodes.Ldfld), new CodeMatch(OpCodes.Ldarg_0), new CodeMatch(OpCodes.Ldfld), new CodeMatch(OpCodes.Blt));
         if (!codeMatcher.IsValid)
         {
-            Plugin.Logger.LogError("IL matching failure in ItemStorage_getConnectableWLinkTarget transpiler.");
+            Plugin.Logger.LogError($"IL matching failure in {MethodBase.GetCurrentMethod().DeclaringType.Name} transpiler.");
             return codeMatcher.InstructionEnumeration();
         }
         var label = codeMatcher.InstructionAt(4).operand;

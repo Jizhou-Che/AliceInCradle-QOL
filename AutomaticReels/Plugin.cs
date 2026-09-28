@@ -7,13 +7,6 @@ using UnityEngine;
 
 namespace AutomaticReels;
 
-public enum ReelTriggerMode
-{
-    Always,
-    HoldKey,
-    Never,
-}
-
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
 public class Plugin : BaseUnityPlugin
 {
@@ -27,10 +20,8 @@ public class Plugin : BaseUnityPlugin
         Logger = base.Logger;
         Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} successfully loaded.");
 
-        TriggerMode = Config.Bind("General", "TriggerMode", ReelTriggerMode.HoldKey,
-            "Always optimize the reel selection, optimize only while the trigger key is held, or never optimize.");
-        TriggerKey = Config.Bind("General", "TriggerKey", KeyCode.RightShift,
-            "The key held to optimize the reel selection when TriggerMode is HoldKey.");
+        TriggerMode = Config.Bind("General", "TriggerMode", ReelTriggerMode.HoldKey, "Always optimize the reel selection, optimize only while the trigger key is held, or never optimize.");
+        TriggerKey = Config.Bind("General", "TriggerKey", KeyCode.RightShift, "The key held to optimize the reel selection when TriggerMode is HoldKey.");
 
         Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
     }
@@ -44,4 +35,11 @@ public class Plugin : BaseUnityPlugin
             _ => false,
         };
     }
+}
+
+public enum ReelTriggerMode
+{
+    Always,
+    HoldKey,
+    Never,
 }

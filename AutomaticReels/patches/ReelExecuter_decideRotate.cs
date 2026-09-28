@@ -12,10 +12,10 @@ public class ReelExecuter_decideRotate
     static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         var codeMatcher = new CodeMatcher(instructions);
-        codeMatcher.MatchForward(false, new CodeMatch(i => i.opcode == OpCodes.Ldfld && ((FieldInfo)i.operand).Name == "content_id"));
+        codeMatcher.MatchForward(false, new CodeMatch(OpCodes.Ldfld, AccessTools.Field(typeof(ReelExecuter), "content_id")));
         if (!codeMatcher.IsValid)
         {
-            Plugin.Logger.LogError("IL matching failure in ReelExecuter_decideRotate transpiler.");
+            Plugin.Logger.LogError($"IL matching failure in {MethodBase.GetCurrentMethod().DeclaringType.Name} transpiler.");
             return codeMatcher.InstructionEnumeration();
         }
         codeMatcher.Advance(2);

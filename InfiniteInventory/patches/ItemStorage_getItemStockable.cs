@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
 using nel;
@@ -14,7 +15,7 @@ public class ItemStorage_getItemStockable
         codeMatcher.MatchForward(false, new CodeMatch(OpCodes.Ldloc_0), new CodeMatch(OpCodes.Brtrue));
         if (!codeMatcher.IsValid)
         {
-            Plugin.Logger.LogError("IL matching failure in ItemStorage_getItemStockable transpiler.");
+            Plugin.Logger.LogError($"IL matching failure in {MethodBase.GetCurrentMethod().DeclaringType.Name} transpiler.");
             return codeMatcher.InstructionEnumeration();
         }
         codeMatcher.Advance(1);

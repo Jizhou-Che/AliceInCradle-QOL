@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
 using nel;
@@ -14,7 +15,7 @@ public class ReelExecuter_applyEffectToIK
         codeMatcher.MatchForward(false, new CodeMatch(OpCodes.Ldc_I4_S, (sbyte)99));
         if (!codeMatcher.IsValid)
         {
-            Plugin.Logger.LogError("IL matching failure in ReelExecuter_applyEffectToIK transpiler.");
+            Plugin.Logger.LogError($"IL matching failure in {MethodBase.GetCurrentMethod().DeclaringType.Name} transpiler.");
             return codeMatcher.InstructionEnumeration();
         }
         codeMatcher.Set(OpCodes.Ldc_I4, 9999);
