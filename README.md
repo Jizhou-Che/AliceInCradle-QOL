@@ -14,6 +14,8 @@
 
 请不要将游戏安装在带有中文或特殊字符的路径，以及过长或嵌套了过多层文件夹的路径中，否则 BepInEx 很有可能失效。
 
+此外，建议不要将游戏安装在需要管理员权限写入的位置（比如`C:\Program Files\`），否则需要每次以管理员身份运行游戏才能让 BepInEx 正常生效。
+
 ## 补充说明
 
 ### 自动转轮 AutomaticReels
@@ -57,3 +59,5 @@ The plugins require [BepInEx 5 x64](https://github.com/BepInEx/BepInEx) to work 
 ## Note
 
 Please do not put the game files inside paths with special characters, or paths that are too long or with too many nested folders, in which cases BepInEx is likely to fail.
+
+Besides, it is advised not to put the game in locations that require administrator privileges for write operations (such as `C:\Program Files\`), or you will need to run the game as administrator every time for BepInEx to function properly.
